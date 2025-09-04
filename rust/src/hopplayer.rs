@@ -26,7 +26,7 @@ impl ICharacterBody3D for PlayerHop {
 		}
 	}
 
-	fn physics_process(&mut self, _delta: f32) {
+	fn physics_process(&mut self, delta: f32) {
 		let mut direction = Vector3::ZERO;
 		let go = Input::singleton();
 
@@ -52,7 +52,13 @@ impl ICharacterBody3D for PlayerHop {
 
 		self.target_velocity.x = direction.x * self.speed;
 		self.target_velocity.z = direction.z * self.speed;
-
+		
+		if self.base().is_on_floor() != true {
+			self.target_velocity.y = self.target_velocity.y - (self.fall_acceleration * delta);
+		}
+		let targ_vel = self.target_velocity;
+		self.base_mut().set_velocity(targ_vel);
+		self.base_mut().move_and_slide();
 		
 	}
 
