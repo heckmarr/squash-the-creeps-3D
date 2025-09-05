@@ -6,3 +6,4 @@ struct SpinnyBot;
 unsafe impl ExtensionLibrary for SpinnyBot {}
 
 mod hopplayer;
+mod mobs;
