@@ -2,12 +2,10 @@ use godot::prelude::*;
 
 use godot::classes::CharacterBody3D;
 use godot::classes::ICharacterBody3D;
-use godot::global::randf_range;
-use godot::global::randi_range;
 
 #[derive(GodotClass)]
 #[class(base=CharacterBody3D)]
-struct Mob {
+pub struct Mob {
 	base: Base<CharacterBody3D>
 }
 

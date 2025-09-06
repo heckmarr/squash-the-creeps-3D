@@ -7,6 +7,7 @@
 size = Vector3(1.87244, 0.696289, 1.40491)
 
 [node name="Mob" type="Mob"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -8)
 script = ExtResource("1_nokgg")
 
 [node name="Pivot" type="Node3D" parent="."]
