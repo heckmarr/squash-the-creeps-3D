@@ -12,7 +12,7 @@ pub struct Mob {
 #[godot_api]
 impl ICharacterBody3D for Mob {
 	fn init(base: Base<CharacterBody3D>) -> Self {
-		godot_print!("Initializing mob");
+	//	godot_print!("Initializing mob");
 
 		Self {
 			base
@@ -24,3 +24,8 @@ impl ICharacterBody3D for Mob {
 	}
 }
 
+impl Mob {
+	pub fn drop_and_roll(&mut self) {
+		self.base_mut().queue_free()
+	}
+}

@@ -22,7 +22,7 @@ impl CreepNotifier {
 		//Get it's name for posterity's sake
 		let name = creep_mob.get_name();
 		//print said name
-		godot_print!("Dropping {name}");
+//		godot_print!("Dropping {name}");
 		//queue free the parent
 		creep_mob.queue_free();
         }
