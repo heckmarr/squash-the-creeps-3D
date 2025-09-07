@@ -2,7 +2,7 @@ extends Mob
 
 @export var min_speed = 10
 @export var max_speed = 18
-
+signal squashed
 
 
 func _on_visible_on_screen_notifier_3d_screen_exited() -> void:
@@ -14,3 +14,6 @@ func initialize(start_position, player_position):
 	var random_speed = randi_range(min_speed, max_speed)
 	velocity = Vector3.FORWARD * random_speed
 	velocity = velocity.rotated(Vector3.UP, rotation.y)
+func squash():
+	squashed.emit()
+	queue_free()
