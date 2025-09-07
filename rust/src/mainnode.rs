@@ -54,6 +54,7 @@ impl MainNode {
 		let mob_path = mob_obj_node.get_path();
 		let mut mob: Gd<Mob> = mob_obj_node.get_node_as(&mob_path);
 		//done casting
+		
 
 		//Look at the player
 		mob.look_at_from_position(start_position, player_position);

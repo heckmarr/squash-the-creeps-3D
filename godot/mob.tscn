@@ -18,5 +18,5 @@ script = ExtResource("1_nokgg")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.02948, 0.151855, 0.202454)
 shape = SubResource("BoxShape3D_dy6sc")
 
-[node name="VisibleOnScreenNotifier3D" type="CreepNotifier" parent="."]
+[node name="CreepNotifier" type="CreepNotifier" parent="."]
 aabb = AABB(-2, -1, -2, 4, 2, 4)
