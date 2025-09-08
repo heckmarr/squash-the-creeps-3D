@@ -68,11 +68,11 @@ impl ICharacterBody3D for PlayerHop {
 			let collision = self.base_mut().get_slide_collision(index).expect("Null collision!");
 			let col_type = collision.get_collider();
 			match col_type {
-				Some(ref x) => {
+				Some(_) => {
 					let col_class_name = col_type.expect("Not valid collision!").get_class();
 					let col_string: String = col_class_name.to_string();
 		//			godot_print!("{col_string}");
-					let mob_str = String::from("Mob");
+		//			let mob_str = String::from("Mob");
 					match col_string.contains("Mob") {
 						true => {
 							let mut mob: Gd<Mob> = collision.get_collider().expect("Null collision!").try_cast::<Mob>()
@@ -94,9 +94,8 @@ impl ICharacterBody3D for PlayerHop {
 					}
 
 				}
-				None => {break;}
+				None => {continue;}
 			}
-			break;
 		}
 		let targ_vel = self.target_velocity;
 		self.base_mut().set_velocity(targ_vel);

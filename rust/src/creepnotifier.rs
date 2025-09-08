@@ -20,7 +20,7 @@ impl CreepNotifier {
 		let creep_path = creep_parent.get_path();
 		let mut creep_mob: Gd<Mob> = creep_parent.get_node_as(&creep_path);
 		//Get it's name for posterity's sake
-		let name = creep_mob.get_name();
+//		let name = creep_mob.get_name();
 		//print said name
 //		godot_print!("Dropping {name}");
 		//queue free the parent
