@@ -50,7 +50,7 @@ impl MobTimer {
                 self.base_mut().add_child(&mob_node.clone());
                 mob_node.set_owner(&self.base().clone().upcast::<Node>());
                 let mob_name = GString::from(mob_node.get_name());
-                godot_print!("creating {mob_name}");
+//                godot_print!("creating {mob_name}");
                 let mob_obj_node = self.base_mut().find_child(&mob_name).expect("Failed to find Mob!");
                 let mob_path = mob_obj_node.get_path();
                 let mut mob: Gd<Mob> = mob_obj_node.get_node_as(&mob_path);
