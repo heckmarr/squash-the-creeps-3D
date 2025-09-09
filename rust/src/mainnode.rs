@@ -35,7 +35,6 @@ impl INode for MainNode {
 use crate::mobs::Mob;
 #[godot_api]
 impl MainNode {
-
 	#[func]
 	fn initialize(&mut self, start_position: Vector3, player_position: Vector3) {
 //		godot_print!("Timer went off! Spawn a mob!");

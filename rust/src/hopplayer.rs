@@ -17,6 +17,14 @@ struct PlayerHop {
 use crate::mobs::Mob;
 
 #[godot_api]
+impl PlayerHop {
+	#[signal]
+	fn squashed();
+
+
+}
+
+#[godot_api]
 impl ICharacterBody3D for PlayerHop {
 	fn init(base: Base<CharacterBody3D>) -> Self {
 		godot_print!("Initializing hopping player");
@@ -82,6 +90,7 @@ impl ICharacterBody3D for PlayerHop {
 							if Vector3::UP.dot(collision.get_normal()) > 0.1 {
 								self.target_velocity.y = self.bounce_impulse;
 		//						mob.bind_mut().squash();
+								self.signals().squashed().emit();
 								mob.bind_mut().drop_and_roll();
 								break;
 							}
@@ -102,6 +111,4 @@ impl ICharacterBody3D for PlayerHop {
 		self.base_mut().move_and_slide();
 
 	}
-
-
 }
