@@ -6,7 +6,7 @@ use godot::classes::Input;
 
 #[derive(GodotClass)]
 #[class(base=CharacterBody3D)]
-struct PlayerHop {
+pub struct PlayerHop {
 	jump_impulse: f32,
 	speed: f32,
 	fall_acceleration: f32,
