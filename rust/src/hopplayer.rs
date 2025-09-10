@@ -7,6 +7,7 @@ use godot::classes::Input;
 #[derive(GodotClass)]
 #[class(base=CharacterBody3D)]
 pub struct PlayerHop {
+	score: i64,
 	jump_impulse: f32,
 	speed: f32,
 	fall_acceleration: f32,
@@ -15,12 +16,21 @@ pub struct PlayerHop {
 	base: Base<CharacterBody3D>
 }
 use crate::mobs::Mob;
+use crate::scorelabel::ScoreLabel;
 
 #[godot_api]
 impl PlayerHop {
 	#[signal]
 	fn squashed();
+	fn on_squashed(&mut self) {
+		let mut lab: Gd<ScoreLabel> = self.base_mut().get_node_as("/root/Main/Player/UserInterface/ScoreLabel");
+		self.score += 1;
+                let text = format!("Score: {0}", self.score);
+                godot_print!("Setting text...");
+                lab.set_text(&text);
 
+
+	}
 
 }
 
@@ -30,6 +40,7 @@ impl ICharacterBody3D for PlayerHop {
 		godot_print!("Initializing hopping player");
 
 		Self {
+			score: 0,
 			jump_impulse: 20.0,
 			speed: 14.0,
 			bounce_impulse: 16.0,
@@ -111,4 +122,9 @@ impl ICharacterBody3D for PlayerHop {
 		self.base_mut().move_and_slide();
 
 	}
+	fn ready(&mut self) {
+		self.signals().squashed().connect_self(PlayerHop::on_squashed);
+	}
 }
+
+

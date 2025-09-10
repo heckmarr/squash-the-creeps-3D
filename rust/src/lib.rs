@@ -11,3 +11,4 @@ mod mobs;
 mod mainnode;
 mod mobtimer;
 mod mobdetector;
+mod scorelabel;
