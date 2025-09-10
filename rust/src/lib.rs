@@ -10,3 +10,4 @@ mod hopplayer;
 mod mobs;
 mod mainnode;
 mod mobtimer;
+mod mobdetector;

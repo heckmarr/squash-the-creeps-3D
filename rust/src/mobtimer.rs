@@ -13,7 +13,7 @@ use crate::hopplayer::PlayerHop;
 
 #[derive(GodotClass)]
 #[class(base=Timer)]
-struct MobTimer {
+pub struct MobTimer {
 	min_speed: i64,
 	max_speed: i64,
 	mob_scene: Gd<PackedScene>,
