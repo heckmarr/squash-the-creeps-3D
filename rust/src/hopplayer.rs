@@ -23,7 +23,7 @@ impl PlayerHop {
 	#[signal]
 	fn squashed();
 	fn on_squashed(&mut self) {
-		let mut lab: Gd<ScoreLabel> = self.base_mut().get_node_as("/root/Main/Player/UserInterface/ScoreLabel");
+		let mut lab: Gd<ScoreLabel> = self.base_mut().get_node_as("/root/Main/UserInterface/ScoreLabel");
 		self.score += 1;
                 let text = format!("Score: {0}", self.score);
                 godot_print!("Setting text...");

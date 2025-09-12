@@ -3,6 +3,7 @@ use godot::prelude::*;
 use godot::classes::Area3D;
 use godot::classes::IArea3D;
 use godot::classes::Node3D;
+use godot::classes::ColorRect;
 
 use crate::mobtimer::MobTimer;
 
@@ -45,5 +46,7 @@ impl MobDetector {
 		let parent_name = parent_node.get_name();
 		godot_print!("Deleting {parent_name}");
 		parent_node.queue_free();
+		let mut ui: Gd<ColorRect> = self.base_mut().get_node_as("/root/Main/UserInterface/Retry");
+		ui.show();
 	}
 }
