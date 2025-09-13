@@ -89,6 +89,7 @@ impl ICharacterBody3D for PlayerHop {
 		}
 		if self.base().is_on_floor() != true {
 			self.target_velocity.y = self.target_velocity.y - (self.fall_acceleration * delta);
+		
 		}
 		for index in 0..self.base().get_slide_collision_count() {
 			let collision = self.base_mut().get_slide_collision(index).expect("Null collision!");
@@ -127,6 +128,10 @@ impl ICharacterBody3D for PlayerHop {
 		let targ_vel = self.target_velocity;
 		self.base_mut().set_velocity(targ_vel);
 		self.base_mut().move_and_slide();
+		let mut piv: Gd<Node3D> = self.base_mut().get_node_as("/root/Main/Player/Pivot");
+		let mut piv_trans = piv.get_rotation();
+		piv_trans.x = (real_consts::PI / (6.0 * targ_vel.y) / self.jump_impulse);
+		piv.set_rotation(piv_trans);
 
 	}
 	fn ready(&mut self) {
