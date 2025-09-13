@@ -3,6 +3,7 @@ use godot::prelude::*;
 use godot::classes::Timer;
 use godot::classes::ITimer;
 use godot::classes::PathFollow3D;
+use godot::classes::AnimationPlayer;
 
 use godot::global::randf;
 use godot::global::randi_range;
@@ -70,6 +71,11 @@ impl MobTimer {
                 //calculate the vector
                 let vel: Vector3 = Vector3::FORWARD * random_speed;
                 let v = vel.rotated(Vector3::UP, mob_rot.y);
+		let mut anim_path = "/root/Main/MobTimer/".to_owned();
+		anim_path.push_str(&mob_node.get_name().to_string());
+		anim_path.push_str("/AnimationPlayer");
+		let mut anim: Gd<AnimationPlayer> = self.base_mut().get_node_as(&anim_path);
+		anim.set_speed_scale(random_speed / self.min_speed as f32);
                 mob.set_velocity(v);
 
 	}

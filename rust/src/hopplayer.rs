@@ -130,7 +130,7 @@ impl ICharacterBody3D for PlayerHop {
 		self.base_mut().move_and_slide();
 		let mut piv: Gd<Node3D> = self.base_mut().get_node_as("/root/Main/Player/Pivot");
 		let mut piv_trans = piv.get_rotation();
-		piv_trans.x = (real_consts::PI / (6.0 * targ_vel.y) / self.jump_impulse);
+		piv_trans.x = real_consts::PI / (6.0 * targ_vel.y) / self.jump_impulse;
 		piv.set_rotation(piv_trans);
 
 	}
