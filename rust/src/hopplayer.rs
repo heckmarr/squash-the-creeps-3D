@@ -2,6 +2,7 @@ use godot::prelude::*;
 use godot::classes::ICharacterBody3D;
 use godot::classes::CharacterBody3D;
 use godot::classes::Input;
+use godot::classes::AnimationPlayer;
 
 
 #[derive(GodotClass)]
@@ -72,7 +73,13 @@ impl ICharacterBody3D for PlayerHop {
 			let pivot_path = pivot_node.get_path();
 			let mut pivot_obj: Gd<Node3D> = pivot_node.get_node_as(&pivot_path);
 			pivot_obj.set_basis(Basis::looking_at(direction, Vector3::UP, true));
+			let mut anim: Gd<AnimationPlayer> = self.base_mut().get_node_as("/root/Main/Player/AnimationPlayer");
+			anim.set_speed_scale(4.0);
+		} else {
+			let mut anim: Gd<AnimationPlayer> = self.base_mut().get_node_as("/root/Main/Player/AnimationPlayer");
+			anim.set_speed_scale(1.0);
 		}
+		
 
 		self.target_velocity.x = direction.x * self.speed;
 		self.target_velocity.z = direction.z * self.speed;
