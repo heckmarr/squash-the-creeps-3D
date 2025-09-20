@@ -1,4 +1,3 @@
 *.uid
 *.save
-*.godot
-
+/godot/.godot

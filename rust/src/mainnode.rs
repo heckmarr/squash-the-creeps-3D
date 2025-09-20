@@ -4,6 +4,7 @@ use godot::classes::Node;
 use godot::classes::INode;
 use godot::classes::ColorRect;
 use godot::classes::InputEvent;
+use godot::classes::AudioStreamPlayer;
 
 #[derive(GodotClass)]
 #[class(base=Node)]
